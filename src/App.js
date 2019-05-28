@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import UserLogin from './UserLogin/UserLogin'
+import GroceryContainer from './GroceryContainer/GroceryContainer'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor () {
+    super()
+    this.state = {
+      loggedIn: false,
+      groceries: [],
+      errands: [],
+      houseId: ""
+    }
+  }
+
+  fetchHouse = (id) => {
+    this.logIn(id)
+    fetch(`http://localhost:3000/api/v1/houses/${id}`)
+      .then(response => response.json())
+      .then(house => this.setState({
+        groceries: house.data.attributes.groceries,
+        errands: house.data.attributes.errands
+      }))
+      .catch(error => console.error(error))
+  }
+
+  logIn = (id) => {
+    this.setState({
+      loggedIn: true,
+      houseId: id})
+  }
+
+  deleteGrocery = (id) => {
+    const groceries = this.state.groceries.filter((grocery) => grocery.id !== id)
+    this.setState({groceries})
+    const body = {id}
+  }
+
+  createBody
+
+  render () {
+    const {loggedIn, groceries, houseId} = this.state
+    return (
+      <div>
+        { loggedIn ?
+          <GroceryContainer groceries={groceries} houseId={houseId} />
+          : <UserLogin fetchHouse={this.fetchHouse}/>}
+      </div>
+    )
+  }
 }
 
 export default App;
