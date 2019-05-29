@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import GroceryItem from '../GroceryItem/GroceryItem'
 import NewGroceryForm from '../NewGroceryForm/NewGroceryForm'
+import './GroceryContainer.css'
 
 class GroceryContainer extends Component {
   constructor (props) {
@@ -10,24 +11,22 @@ class GroceryContainer extends Component {
     }
   }
 
-  handleClick = () => {
-    this.setState({
-      showNew: !this.state.showNew
-    })
+  toggleNew = () => {
+    this.setState({showNew: !this.state.showNew})
   }
 
   render () {
     const {showNew} = this.state
-    const {houseId, groceries} = this.props
+    const {houseId, groceries, deleteItem, addItem} = this.props
     const groceryList = groceries.map((grocery) => {
-      return <GroceryItem key={grocery.id} houseId={houseId} {...grocery} />
+      return <GroceryItem key={grocery.id} houseId={houseId} {...grocery} deleteItem={deleteItem} editItem={this.props.editItem}/>
     })
     return (
-      <div>
-        <h1>Needed Groceries</h1>
+      <div className="grocery-container">
+        <h2>Needed Groceries</h2>
         {groceryList}
-        <button onClick={this.handleClick}>Add a new grocery item</button>
-        {showNew ? <NewGroceryForm /> : null}
+        <button className="button" onClick={this.toggleNew}>Add a new grocery item</button>
+        {showNew ? <NewGroceryForm addItem={addItem} toggleNew={this.toggleNew}/> : null}
       </div>
     )
   }

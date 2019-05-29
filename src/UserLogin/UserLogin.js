@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './UserLogin.css'
 
 class UserLogin extends Component {
   constructor (props) {
@@ -34,15 +35,17 @@ class UserLogin extends Component {
   }
 
   render () {
-    const {inputName, notFound} = this.state
+    const {notFound} = this.state
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>Please enter your name</label>
-          <input name="inputName" placeholder="Enter your name" value={this.state.inputName} onChange={this.handleChange} />
-          <button type="submit">Search Users</button>
-        </form>
-        { notFound ? <p>The entered user was not found. Please try again.</p> : null}
+      <div className="user-search">
+        <p className="instructions">To get started, please search your name in the box below!</p>
+        <div id="form">
+          <form onSubmit={this.handleSubmit}>
+            <input name="inputName" placeholder="Enter your name" value={this.state.inputName} onChange={this.handleChange} />
+            <button className="button" type="submit">Search Users</button>
+          </form>
+        </div>
+        { notFound ? <p id="error">No user was found with that name. Please try again.</p> : null}
       </div>
     )
   }

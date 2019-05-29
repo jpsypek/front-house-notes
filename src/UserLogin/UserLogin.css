@@ -1,0 +1,17 @@
+.user-search {
+  font-family: 'Roboto', sans-serif;
+  margin-top: 2rem;
+}
+
+.instructions {
+  text-align: center;
+}
+
+#form {
+  text-align: center;
+}
+
+#error {
+  text-align: center;
+  color: red
+}

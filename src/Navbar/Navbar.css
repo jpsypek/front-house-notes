@@ -1,0 +1,38 @@
+nav {
+  position: fixed;
+  top: 5rem;
+  width: 100%;
+  z-index: 90
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 1rem;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: center;
+  display: inline;
+  /* padding-top: 8rem; */
+  margin: 1rem 0.5rem
+}
+
+li a {
+  display: inline;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+.containers {
+  position: relative;
+  top: 8rem
+}

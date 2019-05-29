@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 
-class NewGroceryForm extends Component {
+class NewErrandForm extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      name: ""
+      name: "",
+      description: ""
     }
   }
 
@@ -18,20 +19,23 @@ class NewGroceryForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     const {addItem, toggleNew} = this.props
-    addItem("groceries", this.state)
+    addItem("errands", this.state)
     toggleNew()
-    this.setState({name: ""})
+    this.setState({name: "", description: ""})
   }
 
   render () {
-    const {name} = this.state
+    const {name, description} = this.state
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>Item Name:</label>
+        <label>Errand Title:</label>
         <input name="name" onChange={this.handleChange} value={name} />
+        <label>Errand Description:</label>
+        <input name="description" onChange={this.handleChange} value={description} />
+        <button type="submit">Add Errand</button>
       </form>
     )
   }
 
 }
-export default NewGroceryForm
+export default NewErrandForm

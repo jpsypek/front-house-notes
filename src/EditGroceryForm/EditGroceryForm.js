@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 
-class NewGroceryForm extends Component {
+class EditGroceryForm extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      name: ""
+      name: props.name,
+      id: props.id
     }
   }
 
@@ -17,10 +18,9 @@ class NewGroceryForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const {addItem, toggleNew} = this.props
-    addItem("groceries", this.state)
-    toggleNew()
-    this.setState({name: ""})
+    const {editItem, toggleEdit} = this.props
+    editItem("groceries", this.state)
+    toggleEdit()
   }
 
   render () {
@@ -29,9 +29,10 @@ class NewGroceryForm extends Component {
       <form onSubmit={this.handleSubmit}>
         <label>Item Name:</label>
         <input name="name" onChange={this.handleChange} value={name} />
+        <button type="submit">Edit Item</button>
       </form>
     )
   }
 
 }
-export default NewGroceryForm
+export default EditGroceryForm
