@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import UserLogin from './UserLogin/UserLogin'
-import GroceryContainer from './GroceryContainer/GroceryContainer'
-import ErrandContainer from './ErrandContainer/ErrandContainer'
 import Navbar from './Navbar/Navbar'
 
 class App extends Component {
@@ -16,9 +14,9 @@ class App extends Component {
     }
   }
 
-  fetchHouse = (id) => {
-    this.logIn(id)
-    fetch(`http://localhost:3000/api/v1/houses/${id}`)
+  fetchHouse = (idHouse) => {
+    this.logIn(idHouse)
+    fetch(`http://localhost:3000/api/v1/houses/${idHouse}`)
       .then(response => response.json())
       .then(house => this.setState({
         groceries: house.data.attributes.groceries,
@@ -27,10 +25,10 @@ class App extends Component {
       .catch(error => console.error(error))
   }
 
-  logIn = (id) => {
+  logIn = (idHouse) => {
     this.setState({
       loggedIn: true,
-      houseId: id})
+      houseId: idHouse})
   }
 
   deleteItem = (type, id) => {

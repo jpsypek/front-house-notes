@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './NewErrandForm.css'
 
 class NewErrandForm extends Component {
   constructor (props) {
@@ -26,14 +27,24 @@ class NewErrandForm extends Component {
 
   render () {
     const {name, description} = this.state
+    const {showNew, toggleNew} = this.props
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>Errand Title:</label>
-        <input name="name" onChange={this.handleChange} value={name} />
-        <label>Errand Description:</label>
-        <input name="description" onChange={this.handleChange} value={description} />
-        <button type="submit">Add Errand</button>
-      </form>
+        <div>
+        {showNew ?
+        <div className="modal">
+          <div className="modal-main">
+            <form onSubmit={this.handleSubmit}>
+              <label className="modal-label">Errand Title:</label>
+              <input className="modal-input" name="name" onChange={this.handleChange} value={name} />
+              <label className="modal-label">Errand Description:</label>
+              <textarea lassName="modal-input" name="description" onChange={this.handleChange} value={description} />
+              <button className="button modal-button" type="submit">Add Errand</button>
+            </form>
+            <button className="button modal-button" onClick={toggleNew}>Close</button>
+          </div>
+        </div> :
+        null}
+      </div>
     )
   }
 

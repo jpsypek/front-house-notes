@@ -20,11 +20,9 @@ class ErrandItem extends Component {
       <div>
         <h4>{name}</h4>
         <p>{description}</p>
-        <button className="button" onClick={() => deleteItem("errands", id)}>Delete Item</button>
-        <button className="button" onClick={this.toggleEdit}>Edit Item</button>
-        {showEdit
-          ? <EditErrandForm {...this.props} toggleEdit={this.toggleEdit}/>
-          : null}
+        <button className="button" onClick={() => deleteItem("errands", id)}>Delete Errand</button>
+        <button className="button" onClick={this.toggleEdit}>Edit Errand</button>
+        <EditErrandForm {...this.props} toggleEdit={this.toggleEdit} showEdit={showEdit}/>
       </div>
     )
   }

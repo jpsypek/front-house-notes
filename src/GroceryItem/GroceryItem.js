@@ -21,9 +21,7 @@ class GroceryItem extends Component {
         <a className="button" href="https://secure.splitwise.com/#/dashboard" rel="noopener noreferrer" target="_blank" onClick={() => deleteItem("groceries", id)}>Purchased?</a>
         <button className="button" onClick={() => deleteItem("groceries", id)}>Delete Item</button>
         <button className="button" onClick={this.toggleEdit}>Edit Item</button>
-        {showEdit
-          ? <EditGroceryForm {...this.props} toggleEdit={this.toggleEdit}/>
-          : null}
+        <EditGroceryForm {...this.props} toggleEdit={this.toggleEdit} showEdit={showEdit}/>
       </div>
     )
   }

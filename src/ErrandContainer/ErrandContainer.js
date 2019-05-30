@@ -23,10 +23,10 @@ class ErrandContainer extends Component {
     })
     return (
       <div className="errand-container">
-        <h2>Outstanding Errands</h2>
-        {errandList}
+        <h2>Shit To Do!</h2>
         <button className="button" onClick={this.toggleNew}>Add a new errand</button>
-        {showNew ? <NewErrandForm addItem={addItem} toggleNew={this.toggleNew}/> : null}
+        <NewErrandForm addItem={addItem} toggleNew={this.toggleNew} showNew={showNew}/>
+        {errandList}
       </div>
     )
   }

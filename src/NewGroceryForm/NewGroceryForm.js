@@ -25,11 +25,22 @@ class NewGroceryForm extends Component {
 
   render () {
     const {name} = this.state
+    const {showNew, toggleNew} = this.props
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>Item Name:</label>
-        <input name="name" onChange={this.handleChange} value={name} />
-      </form>
+      <div>
+      {showNew ?
+      <div className="modal">
+        <div className="modal-main">
+            <form onSubmit={this.handleSubmit}>
+              <label className="modal-label">Item Name:</label>
+              <input className="modal-input" name="name" onChange={this.handleChange} value={name} />
+              <button className="button modal-button" type="submit">Add Item</button>
+            </form>
+            <button className="button modal-button" onClick={toggleNew}>Close</button>
+          </div>
+        </div>:
+      null}
+      </div>
     )
   }
 

@@ -25,12 +25,22 @@ class EditGroceryForm extends Component {
 
   render () {
     const {name} = this.state
+    const {showEdit, toggleEdit} = this.props
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>Item Name:</label>
-        <input name="name" onChange={this.handleChange} value={name} />
-        <button type="submit">Edit Item</button>
-      </form>
+      <div>
+        {showEdit ?
+        <div className="modal">
+          <div className="modal-main">
+            <form onSubmit={this.handleSubmit}>
+              <label className="modal-label">Item Name:</label>
+              <input className="modal-input" name="name" onChange={this.handleChange} value={name} />
+              <button className="button modal-button" type="submit">Edit Item</button>
+            </form>
+            <button className="button modal-button" onClick={toggleEdit}>Close</button>
+          </div>
+        </div>:
+        null}
+      </div>
     )
   }
 

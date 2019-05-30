@@ -23,10 +23,10 @@ class GroceryContainer extends Component {
     })
     return (
       <div className="grocery-container">
-        <h2>Needed Groceries</h2>
-        {groceryList}
+        <h2>Stuff We Need!</h2>
         <button className="button" onClick={this.toggleNew}>Add a new grocery item</button>
-        {showNew ? <NewGroceryForm addItem={addItem} toggleNew={this.toggleNew}/> : null}
+        <NewGroceryForm addItem={addItem} toggleNew={this.toggleNew} showNew={showNew}/>
+        {groceryList}
       </div>
     )
   }

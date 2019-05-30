@@ -19,20 +19,31 @@ class EditErrandForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.editItem("errands", this.state)
-    this.props.toggleEdit()
+    const {editItem, toggleEdit} = this.props
+    editItem("errands", this.state)
+    toggleEdit()
   }
 
   render () {
     const {name, description} = this.state
+    const {showEdit, toggleEdit} = this.props
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>Errand Title:</label>
-        <input name="name" onChange={this.handleChange} value={name} />
-        <label>Errand Description:</label>
-        <input name="description" onChange={this.handleChange} value={description} />
-        <button type="submit">Edit Errand</button>
-      </form>
+      <div>
+        {showEdit ?
+        <div className="modal">
+          <div className="modal-main">
+            <form onSubmit={this.handleSubmit}>
+              <label className="modal-label">Errand Title:</label>
+              <input className="modal-input" name="name" onChange={this.handleChange} value={name} />
+              <label className="modal-label">Errand Description:</label>
+              <textarea type="text-box" className="modal-input edit-input" name="description" onChange={this.handleChange} value={description} />
+              <button className="button modal-button" type="submit">Edit Errand</button>
+            </form>
+            <button className="button modal-button" onClick={toggleEdit}>Close</button>
+          </div>
+        </div>:
+        null}
+      </div>
     )
   }
 

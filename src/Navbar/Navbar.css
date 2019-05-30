@@ -24,7 +24,7 @@ li a {
   display: inline;
   color: white;
   text-align: center;
-  padding: 2rem;
+  padding: 1rem;
   text-decoration: none;
 }
 
@@ -35,4 +35,8 @@ li a:hover {
 .containers {
   position: relative;
   top: 8rem
+}
+
+.get-started{
+  margin: 3rem
 }
