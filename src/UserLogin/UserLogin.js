@@ -63,7 +63,7 @@ class UserLogin extends Component {
             <button className="button" type="submit">Search Users</button>
           </form>
         </div>
-        { notFound ? <p id="error">No user was found with that name. Please try again.</p> : null}
+        { notFound ? <p id="error">The username or password were incorrect. Please try again.</p> : null}
       </div>
     )
   }
