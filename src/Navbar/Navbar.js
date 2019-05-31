@@ -20,7 +20,10 @@ const Navbar = (props) => {
         </nav>
         <div className="containers">
           <Route exact={true} path="/" render={() => (
-              <p className="get-started">Welcome to the Roommate Reference, your one stop aggregator for all things that you home needs. <br></br> Take a look or add to the list of errands that need to be accomplished or groceries that your house needs by selecting from the menu above!</p>
+              <div className="get-started">
+                <h4>Welcome to House Notes, your one stop aggregator for all things that your home needs.</h4>
+                <p>Take a look or add to the list of errands that need to be accomplished or groceries that your house needs by selecting from the menu above!</p>
+              </div>
             )} />
           <Route path="/groceries" component={() => <GroceryContainer {...props}/>} />
           <Route path="/errands" component={() => <ErrandContainer {...props}/>} />
