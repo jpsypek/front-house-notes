@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './UserLogin.css'
+import CreateUserForm from '../CreateUserForm/CreateUserForm'
 
 class UserLogin extends Component {
   constructor (props) {
@@ -7,7 +8,8 @@ class UserLogin extends Component {
     this.state = {
       inputName: "",
       password: "",
-      notFound: false
+      notFound: false,
+      showCreateForm: false
     }
   }
 
@@ -51,19 +53,30 @@ class UserLogin extends Component {
       this.props.fetchHouse(idHouse)
     }
 
+    toggleCreateForm = () => {
+      this.setState({showCreateForm: !this.state.showCreateForm})
+    }
+
   render () {
-    const {notFound} = this.state
+    const {notFound, showCreateForm, inputName, password} = this.state
+    const {fetchHouse} = this.props
     return (
-      <div className="user-search">
-        <p className="instructions">To get started, please log in with your username and password below!</p>
-        <div id="form">
-          <form onSubmit={this.handleSubmit}>
-            <input name="inputName" placeholder="Enter your name" value={this.state.inputName} onChange={this.handleChange} />
-            <input type="password" name="password" placeholder="Enter your password" value={this.state.password} onChange={this.handleChange} />
-            <button className="button" type="submit">Search Users</button>
-          </form>
+      <div>
+        <div className="user-search">
+          <p className="instructions">To get started, please log in or create an account below!</p>
+          <div id="form">
+            <form onSubmit={this.handleSubmit}>
+              <input name="inputName" placeholder="Enter your name" value={inputName} onChange={this.handleChange} />
+              <input type="password" name="password" placeholder="Enter your password" value={password} onChange={this.handleChange} />
+              <button className="button" type="submit">Log In</button>
+            </form>
+          </div>
+          { notFound ? <p id="error">The entered username or password was incorrect. Please try again.</p> : null}
         </div>
-        { notFound ? <p id="error">No user was found with that name. Please try again.</p> : null}
+        <div className="add-user">
+          <button onClick={this.toggleCreateForm} className="create-act button">Create Account</button>
+          <CreateUserForm showCreateForm={showCreateForm} toggleCreateForm={this.toggleCreateForm} fetchHouse={fetchHouse}/>
+        </div>
       </div>
     )
   }
