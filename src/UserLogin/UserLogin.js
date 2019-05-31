@@ -77,6 +77,7 @@ class UserLogin extends Component {
           <button onClick={this.toggleCreateForm} className="create-act button">Create Account</button>
           <CreateUserForm showCreateForm={showCreateForm} toggleCreateForm={this.toggleCreateForm} fetchHouse={fetchHouse}/>
         </div>
+        { notFound ? <p id="error">The username or password were incorrect. Please try again.</p> : null}
       </div>
     )
   }
