@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    if (localStorage.getItem("house_id")) {
+    if (localStorage.getItem('token')) {
       this.fetchHouse(localStorage.getItem("house_id"))
     }
   }
