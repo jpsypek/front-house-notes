@@ -14,9 +14,31 @@ class App extends Component {
     }
   }
 
+  componentDidMount = () => {
+    if (localStorage.getItem("house_id")) {
+      this.fetchHouse(localStorage.getItem("house_id"))
+    }
+  }
+
+  logOut = () => {
+    localStorage.clear()
+    window.location.href = "http://localhost:3001/"
+    this.setState({
+      loggedIn: false,
+      groceries: [],
+      errands: [],
+      houseId: ""
+    })
+  }
+
   fetchHouse = (idHouse) => {
     this.logIn(idHouse)
-    fetch(`http://localhost:3000/api/v1/houses/${idHouse}`)
+    fetch(`http://localhost:3000/api/v1/houses/${idHouse}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+  }
+    })
       .then(response => response.json())
       .then(house => this.setState({
         groceries: house.data.attributes.groceries,
@@ -39,10 +61,11 @@ class App extends Component {
       method: "DELETE",
       headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         body: JSON.stringify(body)
       })
-      .catch(error => (console.error(error.message)))
+      .catch(error => (console.error(error)))
   }
 
   addItem = (type, item) => {
@@ -53,11 +76,12 @@ class App extends Component {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         body: JSON.stringify(body)
       })
       .then(() => this.fetchHouse(this.state.houseId))
-      .catch(error => (console.error(error.message)))
+      .catch(error => (console.error(error)))
   }
 
   editItem = (type, item) => {
@@ -69,11 +93,12 @@ class App extends Component {
       method: "PATCH",
       headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         body: JSON.stringify(body)
       })
       .then(() => this.fetchHouse(houseId))
-      .catch(error => (console.error(error.message)))
+      .catch(error => (console.error(error)))
   }
 
 
@@ -82,7 +107,13 @@ class App extends Component {
     return (
       <div>
         <header>
-          {loggedIn ? <h1>Roommate Reference!</h1> : <h1>Welcome to the Roommate Reference</h1>}
+          {loggedIn ?
+            <div>
+              <h1>House Notes!</h1>
+              <button className="button log-out" onClick={this.logOut}>Log Out</button>
+            </div> :
+             <h1>Welcome to House Notes!</h1>
+              }
         </header>
         { loggedIn ?
           <Navbar groceries={groceries} errands={errands} addItem={this.addItem} editItem={this.editItem} deleteItem={this.deleteItem}/> :

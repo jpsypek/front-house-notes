@@ -34,9 +34,16 @@ li a:hover {
 
 .containers {
   position: relative;
-  top: 8rem
+  top: 10rem
 }
 
 .get-started{
-  margin: 3rem
+  margin: 3rem 13rem 1rem 13rem;
+  font-size: 18px;
+}
+
+.log-out {
+  position: fixed;
+  right: 10px;
+  top: 5px
 }

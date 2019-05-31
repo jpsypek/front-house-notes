@@ -37,7 +37,7 @@ class NewErrandForm extends Component {
               <label className="modal-label">Errand Title:</label>
               <input className="modal-input" name="name" onChange={this.handleChange} value={name} />
               <label className="modal-label">Errand Description:</label>
-              <textarea lassName="modal-input" name="description" onChange={this.handleChange} value={description} />
+              <textarea className="modal-input" name="description" onChange={this.handleChange} value={description} />
               <button className="button modal-button" type="submit">Add Errand</button>
             </form>
             <button className="button modal-button" onClick={toggleNew}>Close</button>
