@@ -1,6 +1,6 @@
-# The Ticklist
+# House Notes
 
-The Ticklist is a single page application that allows users to keep track of the climbs that they have sent, and keep a list of climbs that they would like to do. This application utilizes a Rails API and Postgres database.
+House Notes is an online resource for all roommates of a home to keep track of any groceries that are needed or errands that need to be done around the house.
 
 ## Getting Started
 
@@ -9,7 +9,7 @@ The Ticklist is a single page application that allows users to keep track of the
 3. run rails db:seed to seed the db
 4. run rails s to run the backend server
 5. git clone this repo
-6. run lite-server to frontend server
+6. run npm start to frontend server
 
 
 ## Authors
