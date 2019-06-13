@@ -1,6 +1,8 @@
 # House Notes
 
-House Notes is an online resource for all roommates of a home to keep track of any groceries that are needed or errands that need to be done around the house.
+House Notes is an online resource for all roommates of a home to keep track of any groceries that are needed or errands that need to be done around the house. This application was built with React utilizing a Ruby on Rails backend (https://github.com/jpsypek/back-house-notes).
+
+[Video of this project](House-Notes-Video.mov)
 
 ## Getting Started
 
