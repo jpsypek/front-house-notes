@@ -1,8 +1,6 @@
 # House Notes
 
-House Notes is an online resource for all roommates of a home to keep track of any groceries that are needed or errands that need to be done around the house. This application was built with React utilizing a Ruby on Rails backend (https://github.com/jpsypek/back-house-notes).
-
-[Video of this project](https://youtu.be/MxHU4iLcojo)
+House Notes is an online resource for all roommates of a home to keep track of any groceries that are needed or errands that need to be done around the house. This application was built with React utilizing a RESTful API built with Ruby on Rails and a Postgres database.
 
 ## Getting Started
 
@@ -10,9 +8,12 @@ House Notes is an online resource for all roommates of a home to keep track of a
 2. run rails db:create to create the Postgres db
 3. run rails db:seed to seed the db
 4. run rails s to run the backend server
-5. git clone this repo
+5. git clone the frontend repository (https://github.com/jpsypek/front-house-notes)
 6. run npm start to frontend server
 
+## Video
+
+[Video demo](https://youtu.be/MxHU4iLcojo)
 
 ## Authors
 
